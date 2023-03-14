@@ -24,8 +24,8 @@ async function LoadMessages()
     if (response.ok) {Msgs = await response.json();}
     else {Msgs = ['Bugger.'];}
     // Then find the table, remove prior content(?), then add the new default row. 
-    const table = document.querySelector('#mainTable');
-    removeContentFrom(table);
+    const table = document.querySelector('#tableBody');
+    //removeContentFromElems(table);
     addDefaultRow(Msgs, table);
 }//ACTUALLY does
 
@@ -35,3 +35,4 @@ function loadPage()
 }
 
 loadPage();
+// CREATE HTML TEMPLATE
