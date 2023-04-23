@@ -5,7 +5,9 @@
 
 <title> Placement Diary </title>
 <header> UP2009000 </header>
+<main id = "main">
 
+</main>
 <section id = tableSection>
     <h1> Placement Diary </h1>  
     <table id = "mainTableArch">
@@ -25,7 +27,18 @@
     </table>
 </section>
 
-<section id = >
-
-</section>
-
+<template id = "tableMain">
+    <thead>
+        <tr>
+            <th colspan = "4" class = "tableHeader"> Placement Diary </th>
+        </tr>
+    </thead>
+</template>
+<template id = "tableRowTemplate"> 
+    <tr>
+        <td class = "date"></td>
+        <td class = "workDone"></td>
+        <td class = "ExpGain"></td>
+        <td class = "Competencies"></td>
+    </tr>
+</template>

@@ -5,6 +5,12 @@ function removeContentFromElems(elem)
     elem.textContent = "";
 } //Supply an element, remove its text content. 
 
+function cloneTemplate(selector)
+{//Look for a template, then clone its first child as otherwise youll clone one step above it, not wanted. 
+    const template = document.querySelector(selector);
+    return template.content.firstElementChild.cloneNode(true);
+}
+
 function addDefaultRow(Msgs, location) 
 {//SHOULD create a tableRow, then for every default Message load it into a tableDataCell, appended to TR, append to table. 
     const tr = document.createElement('tr');
