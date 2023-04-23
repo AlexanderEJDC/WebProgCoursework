@@ -9,7 +9,14 @@
 
 </main>
 <section id = tableSection>
-    <h1> Placement Diary </h1>  
+    <h1> Placement Diary </h1>
+    
+    <input  type="date" class = "dateInput" name = "dateWorked" min = "2023-01-01" max = "2040-12-12">
+    <input type="text" class = "workInput" placeholder = "Add work done here">
+    <input type="text" class = "xpInput" placeholder = "Add XP gains here">
+    <input type="text" class = "compInput" placeholder = "Add competencies here"> 
+    <input type="submit" class= "submissionBtn" value = "Send Message" >
+
     <table id = "mainTableArch">
         <thead>
                 <tr>
@@ -27,6 +34,8 @@
     </table>
 </section>
 
+<section id = templates>
+
 <template id = "tableMain">
     <thead>
         <tr>
@@ -34,6 +43,7 @@
         </tr>
     </thead>
 </template>
+
 <template id = "tableRowTemplate"> 
     <tr>
         <td class = "date"></td>
@@ -42,3 +52,15 @@
         <td class = "Competencies"></td>
     </tr>
 </template>
+
+<template id = "InputBox">
+    
+    <input  type="date" class = "dateInput" name = "dateWorked" min = "2023-01-01" max = "2040-12-12">
+    <input type="text" class = "workInput" placeholder = "Add work done here">
+    <input type="text" class = "xpInput" placeholder = "Add XP gains here">
+    <input type="text" class = "compInput" placeholder = "Add competencies here"> 
+    <input type="submit" class= "submissionBtn" value = "Send Message" > 
+
+</template>
+
+</section> 
