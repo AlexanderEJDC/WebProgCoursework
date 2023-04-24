@@ -15,7 +15,7 @@ function addDefaultRow(Msgs, location)
         tr.append(td)
     }
     location.append(tr); 
-}//ACTUALLY does
+}
 
 async function LoadMessages()
 {//SHOULD fetch messages, then if it got a valid response, set them from response json. Otherwise, set it to "Bugger" if couldnt retrieve. 
@@ -28,6 +28,23 @@ async function LoadMessages()
     //removeContentFromElems(table);
     addDefaultRow(Msgs, table);
 }//ACTUALLY does
+
+
+//FUNCTIONS FOR CLONING TEMPLATES GO HERE
+function cloneTableHeader()
+{
+    const tableHeader = document.querySelector("#tableMain");
+    const clonedTHeader = tableHeader.cloneNode(true);
+    document.body.append(clonedTHeader);
+}
+function cloneTableRow()
+{
+    const tableRow = document.querySelector("#tableRowTemplate");
+    const cloneTableRow = tableRow.cloneNode(true);
+    //TODO: Figure out a way to add text content to the individual classes
+    //Preferably make it an import straight from the message. 
+    document.body.append(cloneTableRow);
+}
 
 function loadPage()
 {
