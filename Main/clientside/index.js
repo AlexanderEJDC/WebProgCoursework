@@ -30,7 +30,7 @@ function addDefaultRow(Msgs, location)
 
 async function sendMessage()
 {//Send this to the server
-    const msgPayload = { msg: el.message.value }
+    const msgPayload = { msg: el.suppliedDate.value, el.suppliedWork.value, }
     //console.log('Payload', payload);
 
     const response = await fetch('messages',
@@ -61,14 +61,14 @@ async function LoadMessages()
     if (response.ok) {Msgs = await response.json();}
     else {Msgs = ['Bugger.'];}
     // Then find the table, remove prior content(?), then add the new default row. 
-    const table = document.querySelector('#tableBody');
+    const table = document.querySelector('#placementTable');
     //removeContentFromElems(table);
     addDefaultRow(Msgs, table);
 }//ACTUALLY does
 
 function prepareHandles()
 {//Setup elements used in the code here.
-    el.tableParent = document.querySelectorAll(".")
+    el.tableParent = document.querySelectorAll("#placementTable");
     el.suppliedDate = document.querySelectorAll(".dateInput");
     el.suppliedWork = document.querySelectorAll(".workInput");
     el.suppliedXP = document.querySelectorAll(".xpInput");

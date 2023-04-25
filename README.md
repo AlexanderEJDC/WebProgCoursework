@@ -1,7 +1,7 @@
 # WebProgCoursework
 Coursework for Web Programming UoP
 
-Commanders required to run:
+Commands required to run:
 
     PLAN: Populate page with template
 
