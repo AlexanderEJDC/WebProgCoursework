@@ -6,7 +6,10 @@ import { send } from "process";
 
 async function sendMessage()
 {//Send a message to the server
-    const payload = { msg: el.suppliedDate.value, el.suppliedWork.value}; 
+    const payload = 
+    { //Set payload up as an array for consistent format.
+        msg: [el.suppliedDate.value, el.suppliedWork.value, el.suppliedXP.value, el.suppliedComp]
+    }; 
     console.log("Payload", payload);
 
     const response = await fetch("messages", 
