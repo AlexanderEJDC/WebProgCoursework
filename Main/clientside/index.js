@@ -1,15 +1,47 @@
 // Write our functions and other scripts here
 
-import { send } from "process";
+//import { table } from "console";
+//import { send } from "process";
+
+//!!Items to declare at start
+
+let el = {}; //Create an empty object to store elements inside
+let ui = {}; //Create an empty object to store UI elements inside. 
+
+
+//End of starting declarations
 
 //!!FUNCTIONS TO HANDLE MESSAGES
 
+/*function loadAllMessages(messages, appendLocation)
+{//Load all stored messages
+    for(const message of messages)
+    {//So for every message/table entry, do:
+
+    }
+}*/
+
+function addMSGToTable(payload, appendLocation)
+{//
+    const dateCell = appendLocation.querySelector('.date');
+    dateCell.textContent = payload[date].value;
+    const workCell = appendLocation.querySelector('.workDone');
+    workCell.textContentm= payload[work].value;
+    const experienceCell = appendLocation.querySelector('.ExpGain');
+    experienceCell.textContent = payload[experience].value;
+    const competencyCell = appendLocation.querySelector('.Competencies');
+    competencyCell.textContent = payload[competencies].value;
+}
+
 async function sendMessage()
 {//Send a message to the server
-    const payload = 
-    { //Set payload up as an array for consistent format.
-        msg: [el.suppliedDate.value, el.suppliedWork.value, el.suppliedXP.value, el.suppliedComp]
-    }; 
+    const payload = {}; //Declare payload as an empty object
+    console.log(ui.inputFields);
+    for (const field of ui.inputFields)
+    {//For every payload field, assign a name to a field and store the relative value
+        payload[field.name] = field.value;
+        field.value = ""; //Reset the form field back to empty
+    } 
     console.log("Payload", payload);
 
     const response = await fetch("messages", 
@@ -20,9 +52,11 @@ async function sendMessage()
     }); 
 
     if (response.ok)
-    {
-        
-    } else {}
+    {//send the updated messages to the server, then append it to the table
+        const updatedMsgs = await response.json; 
+        const clonedRow = cloneTemplate("#tableRowTemplate");   
+        addMSGToTable(payload,clonedRow); 
+    } else {console.log("Failed to send message");}
 }       
 
 //END OF MESSAGE FUNCTIONS
@@ -34,29 +68,45 @@ function checkKeys(e)
     if (e.key === 'Enter') { sendMessage(); }
 }
 
+function toggleBtn()
+{
+    for (const field of ui.inputFields)
+    {//Check every field, if its has no value, disable the button. 
+        if (!field.value) {el.submissionBtn.disabled = true; return;}
+        el.submissionBtn.removeAttribute('disabled');
+    }
+}
+
 
 function prepareHandles()
 {//Setup elements used in the code here.
     el.tableParent = document.querySelector("#placementTable");
-    el.suppliedDate = document.querySelectorAll(".dateInput");
-    el.suppliedWork = document.querySelectorAll(".workInput");
-    el.suppliedXP = document.querySelectorAll(".xpInput");
-    el.suppliedComp = document.querySelectorAll(".compInput");
-    el.submissionBtn = document.querySelectorAll(".submissionBtn");
+    ui.inputFields = document.querySelectorAll(".payloadInput");
+    el.submissionBtn = document.querySelector("#submissionBtn");
+    el.suppliedDate = document.querySelector("#dateInput");
+    el.suppliedWork = document.querySelector("#workInput");
+    el.suppliedXP = document.querySelector("#xpInput");
+    el.suppliedComp = document.querySelector("#compInput");
 }
 
 function addEventListeners()
 {//Setup button listeners. 
-    el.submissionBtn.addEventListeners("click", sendMessage); 
-    el.suppliedDate.addEventListeners("keyup", checkKeys);
-    el.suppliedWork.addEventListeners("keyup", checkKeys);
-    el.suppliedXP.addEventListeners("keyup", checkKeys);
-    el.suppliedComp.addEventListeners("keyup", checkKeys);
+    el.submissionBtn.addEventListener("click", sendMessage); 
+    el.suppliedDate.addEventListener("keyup", checkKeys);
+    el.suppliedWork.addEventListener("keyup", checkKeys);
+    el.suppliedXP.addEventListener("keyup", checkKeys);
+    el.suppliedComp.addEventListener("keyup", checkKeys);
 }//Should setup a listneer on the submit button, and also on the input areas. 
 
 //END OF ELEMENT HANDLING FUNCTIONS!!
 
 //!!FUNCTIONS FOR CLONING TEMPLATES GO HERE
+
+function cloneTemplate(selector)
+{
+    const template = document.querySelector(selector);
+    return template.content.firstElementChild.cloneNode(true);
+}
 
 //END OF CLONING FUNCTIONS!!
 
@@ -64,7 +114,8 @@ function loadPage()
 {
     prepareHandles(); 
     addEventListeners();
-    LoadMessages();
+    //loadAllMessages();
+    //toggleBtn();
 }
 
 loadPage(); //Load the page with everything initialised 
