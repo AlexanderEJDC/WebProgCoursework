@@ -27,7 +27,6 @@ export function findMessage(id)
 
 export function addMessage(payload)
 {
-    console.log(payload.date);
     const newMessage =
     {//Declare the new message, and set its parameters.
         id: uuid(),
@@ -36,7 +35,6 @@ export function addMessage(payload)
         xp: payload.xp,
         competencies: payload.competencies
     };
-    console.log(newMessage);
     messages = [newMessage, ...messages];
     return messages; 
 }

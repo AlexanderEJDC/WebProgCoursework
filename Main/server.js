@@ -15,7 +15,7 @@ function getMessages(request, response)
 function getMessageByID(request, response)
 {
     const result = memoryDB.findMessage(request.params.id);
-    if (resultlt) { response.json(result); }
+    if (result) { response.json(result); }
     else { response.status(404).send("No match for that ID."); }
 }
 
