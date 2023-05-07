@@ -13,36 +13,48 @@ let ui = {}; //Create an empty object to store UI elements inside.
 
 //!!FUNCTIONS TO HANDLE MESSAGES
 
-/*function loadAllMessages(messages, appendLocation)
-{//Load all stored messages
-    for(const message of messages)
-    {//So for every message/table entry, do:
+function removeContent(element) 
+{
+    element.textContent = '';
+}
 
+function showMessage(payload)
+{
+    for (const item of payload)
+    {
+        const newRow = cloneTemplate('#tableRowTemplate');
+        const dateCell = newRow.querySelector('.date');
+        dateCell.textContent = item.date;
+        const workCell = newRow.querySelector('.workDone');
+        workCell.textContent= item.work;
+        const experienceCell = newRow.querySelector('.ExpGain');
+        experienceCell.textContent = item.xp;
+        const competencyCell = newRow.querySelector('.Competencies');
+        competencyCell.textContent = item.competencies;
+        el.tableParent.appendChild(newRow); 
     }
-}*/
+}
 
-function addMSGToTable(payload, appendLocation)
-{//
-    const dateCell = appendLocation.querySelector('.date');
-    dateCell.textContent = payload[date].value;
-    const workCell = appendLocation.querySelector('.workDone');
-    workCell.textContentm= payload[work].value;
-    const experienceCell = appendLocation.querySelector('.ExpGain');
-    experienceCell.textContent = payload[experience].value;
-    const competencyCell = appendLocation.querySelector('.Competencies');
-    competencyCell.textContent = payload[competencies].value;
+async function loadAllMessages()
+{//Load all stored messages
+    const response = await fetch('messages');
+    let messages; 
+    if (response.ok) { messages = await response.json(); }
+    else (messages = [{work: 'bugger all', xp: "None", competencies: "ID-10-T" }] )
+    //for every message, create a new row, send content in there and append to the table parent      
+    showMessage(messages);
 }
 
 async function sendMessage()
 {//Send a message to the server
     const payload = {}; //Declare payload as an empty object
-    console.log(ui.inputFields);
     for (const field of ui.inputFields)
     {//For every payload field, assign a name to a field and store the relative value
         payload[field.name] = field.value;
         field.value = ""; //Reset the form field back to empty
     } 
     console.log("Payload", payload);
+    console.log("Payload date", payload.date)
 
     const response = await fetch("messages", 
     {
@@ -53,9 +65,9 @@ async function sendMessage()
 
     if (response.ok)
     {//send the updated messages to the server, then append it to the table
-        const updatedMsgs = await response.json; 
-        const clonedRow = cloneTemplate("#tableRowTemplate");   
-        addMSGToTable(payload,clonedRow); 
+        const updatedMsgs = await response.json();
+        removeContent(el.tableParent);
+        showMessage(updatedMsgs);
     } else {console.log("Failed to send message");}
 }       
 
@@ -73,8 +85,8 @@ function toggleBtn()
     for (const field of ui.inputFields)
     {//Check every field, if its has no value, disable the button. 
         if (!field.value) {el.submissionBtn.disabled = true; return;}
-        el.submissionBtn.removeAttribute('disabled');
     }
+    el.submissionBtn.removeAttribute('disabled');
 }
 
 
@@ -114,7 +126,7 @@ function loadPage()
 {
     prepareHandles(); 
     addEventListeners();
-    //loadAllMessages();
+    loadAllMessages();
     //toggleBtn();
 }
 
