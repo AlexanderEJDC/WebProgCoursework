@@ -38,3 +38,14 @@ export function addMessage(payload)
     messages = [newMessage, ...messages];
     return messages; 
 }
+
+export function editMessage(updatedMsg)
+{
+    const previous = findMessage(updatedMsg.id);
+    if (previous == null) { throw new Error(`Not found`); }
+
+    previous.date = updatedMsg.date;
+    previous.work = updatedMsg.work;
+    previous.xp = updatedMsg.xp;
+    previous.competencies = updatedMsg.competencies; 
+}

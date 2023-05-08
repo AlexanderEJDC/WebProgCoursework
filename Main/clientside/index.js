@@ -21,7 +21,9 @@ function removeContent(element)
 function showMessage(payload)
 {
     for (const item of payload)
-    {
+    {//For every sub-payload recieved, add new table rows. 
+    //Will create new row, and fill four datacells with content.  
+        console.log("Payload Recieved: ", item);
         const newRow = cloneTemplate('#tableRowTemplate');
         const dateCell = newRow.querySelector('.date');
         dateCell.textContent = item.date;
@@ -32,6 +34,12 @@ function showMessage(payload)
         const competencyCell = newRow.querySelector('.Competencies');
         competencyCell.textContent = item.competencies;
         el.tableParent.appendChild(newRow); 
+
+        //This will add an attribute to enable editing 
+        const editor = document.createElement('a');
+        editor.textContent = "Edit Message Here"; //Set the text content 
+        editor.href = `/editor#${item.id}`; //point the editing toward editor.html w/ payload ID
+        newRow.append(`(`, editor, `)`); // Append the editor next to the tableRows 
     }
 }
 
@@ -40,7 +48,7 @@ async function loadAllMessages()
     const response = await fetch('messages');
     let messages; 
     if (response.ok) { messages = await response.json(); }
-    else (messages = [{work: 'bugger all', xp: "None", competencies: "ID-10-T" }] )
+    else { messages = [{work: 'bugger all', xp: "None", competencies: "ID-10-T" }] }
     //for every message, create a new row, send content in there and append to the table parent      
     showMessage(messages);
 }
@@ -53,8 +61,7 @@ async function sendMessage()
         payload[field.name] = field.value;
         field.value = ""; //Reset the form field back to empty
     } 
-    console.log("Payload", payload);
-    console.log("Payload date", payload.date)
+    console.log("Transmitted Payload", payload);
 
     const response = await fetch("messages", 
     {
