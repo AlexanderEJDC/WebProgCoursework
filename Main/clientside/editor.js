@@ -9,7 +9,6 @@ function showMessage(payload) {
 }
 
 function getMessageID() {
-  console.log('ID: ', window.location.hash.substring(1));
   return window.location.hash.substring(1);
 }
 
@@ -20,17 +19,14 @@ async function recieveMessage() {
   let message; // Declare message
   if (response.ok) {
     message = await response.json();
-  } else {
-    message = [{ work: 'bugger all', xp: 'None', competencies: 'ID-10-T' }];
-  }
-
+  } else { message = [{ work: 'bugger all', xp: 'None', competencies: 'ID-10-T' }]; }
+  console.log('Recieved payload: ', message);
   showMessage(message);
 }
 
 async function sendMessage() {
   const id = getMessageID();
-  const payload = {};
-  //debugger;
+  const payload = { id };
   for (const field of ui.input) {
     payload[field.name] = field.value;
     field.value = '';
@@ -59,7 +55,6 @@ function checkKeys(e) { // add a message if enter pressed
 function prepareHandles() {
   ui.input = document.querySelectorAll('.input');
   el.submissionBtn = document.querySelector('#submit');
-  el.id = window.location.hash.substring(1);
   el.date = document.querySelector('#date');
   el.work = document.querySelector('#work');
   el.xp = document.querySelector('#xp');
