@@ -15,11 +15,9 @@ export function listMessages() { return messages; }
 
 export function findMessage(id) { // Find a specific message
   for (const message of messages) { // iterate through all objects
-    console.log(message);
     if (message.id === id) { // If the message id EXACTLY matches that as stored, return the message
       return message;
     }
-    // return null; // Otherwise return null.
   }
 }
 
@@ -44,4 +42,6 @@ export function editMessage(updatedMsg) {
   previous.work = updatedMsg.work;
   previous.xp = updatedMsg.xp;
   previous.competencies = updatedMsg.competencies;
+
+  return previous;
 }
