@@ -25,6 +25,7 @@ function postMessages(request, response)
 
 function putMessage(request, response)
 {//Put a new message in the same spot as provided
+    console.log(request.body);
     const message = memoryDB.editMessage(request.body);
     response.json(message); 
 }
