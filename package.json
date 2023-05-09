@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
-    "watch-server": "node --watch server.js"
+    "start": "cd main & node server",
+    "watch-server": "cd main & node --watch server.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +20,12 @@
   "devDependencies": {
     "eslint": "^8.39.0",
     "eslint-config-portsoc": "^1.0.1"
+  },
+  "eslintConfig": {
+    "extends": "portsoc",
+    "root": true,
+    "env": {
+      "browser": true
+    }
   }
 }
