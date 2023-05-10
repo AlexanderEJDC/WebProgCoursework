@@ -3,27 +3,7 @@ Coursework for Web Programming UoP
 
 Objectives for this build:
 
-    OBJ1: Enable message editing
-    OBJ2: Make message storage persistent
-
-    TODO: Build a seperate page to hold message editing
-        - new html page - editor.html
-        - new js page - editor.js
-
-        import message template? 
-        will have to send updated content to payload
-        payload will have to update specific message
-        - already implemented ID's - potential use? 
-
-        - IMPLEMENTATION: 
-            - Add new attribute to the showMessage item,
-            which will take you to editor.html . 
-
-
-    memoryDB.js:
-        Make it persistent
-
-        - TODO: 
+    OBJ - Add database communication.
 
 
 CODE REFERENCING: 
