@@ -1,1 +1,58 @@
-MainTable { border: 1px solid #333;}
+:root {
+    font-family: Arial;
+    --pad: 1rem;
+
+}
+
+header {
+    width: 50vw;
+}
+
+* {
+    background-color: black;
+    color: white;
+}
+
+.payloadInput {
+    color: lightblue;
+    background-color: lightblue;
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.input {
+    background-color: lightblue;
+    color: black;
+}
+
+#placementTable { 
+    border: 5px solid turquoise;
+    border-spacing: 1rem;
+    width: auto;
+    padding: 0.5rem;
+    display: grid; 
+}
+
+.tableHeader {
+    border: 2px solid #333;
+    color: lightblue;
+}
+
+.dataRow {
+    border: 2px solid #333; 
+}
+
+a {
+    color: lightblue;
+}
+
+#submissionBtn {
+    background-color: aquamarine;
+    color: black;
+}
+
+#submit {
+    background-color: aquamarine;
+    color: black;
+}

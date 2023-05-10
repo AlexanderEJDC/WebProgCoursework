@@ -67,6 +67,7 @@ async function sendMessage() { // Send a message to the server
     const updatedMsgs = await response.json();
     removeContent(el.tableParent);
     showMessage(updatedMsgs);
+    el.submissionBtn.disabled = true;
   } else { console.log('Failed to send message'); }
 }
 
@@ -94,6 +95,10 @@ function prepareHandles() { // Setup elements used in the code here.
   el.suppliedWork = document.querySelector('#workInput');
   el.suppliedXP = document.querySelector('#xpInput');
   el.suppliedComp = document.querySelector('#compInput');
+
+  for (const field of ui.inputFields) {
+    field.addEventListener('input', toggleBtn);
+  }
 }
 
 function addEventListeners() { // Setup button listeners.
