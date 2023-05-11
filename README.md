@@ -1,10 +1,6 @@
 # WebProgCoursework
 Coursework for Web Programming UoP
 
-Objectives for this build:
-
-    OBJ - Add database communication.
-
 FUNCTIONALITY: 
 
     - Has read only, linked in the footer of main page. Can return you to main. 

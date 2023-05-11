@@ -15,7 +15,7 @@ function showMessage(payload) {
     console.log('Payload Recieved: ', item);
     const newRow = cloneTemplate('#tableRowTemplate');
     const dateCell = newRow.querySelector('.date');
-    dateCell.textContent = item.date;
+    dateCell.textContent = item.dateDone;
     const workCell = newRow.querySelector('.workDone');
     workCell.textContent = item.work;
     const experienceCell = newRow.querySelector('.ExpGain');

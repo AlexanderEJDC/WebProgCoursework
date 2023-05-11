@@ -11,22 +11,22 @@ CREATE TABLE Messages (
 INSERT INTO Messages (id, dateDone, work, xp, competencies) VALUES 
 (
     '01',
-    '10/05/2023',
+    '2023-05-11',
     'Built the database',
     'basic SQL skill',
     'A1'
 ),
 (
     '02',
-    '09/05/2023',
+    '2023-05-09',
     'Enabled Editing',
     'basic js',
     'A2'
 ),
 (
     '03',
-    '08/05/2023',
-    'Basic memeory handling',
+    '2023-05-08',
+    'Basic memory handling',
     'basic js skill',
     'A1'
 );

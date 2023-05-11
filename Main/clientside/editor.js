@@ -2,7 +2,7 @@ const el = {}; // Declare an empty object for elements.
 const ui = {}; //
 
 function showMessage(payload) {
-  el.date.value = payload.date;
+  el.date.value = payload.dateDone;
   el.work.value = payload.work;
   el.xp.value = payload.xp;
   el.competencies.value = payload.competencies;

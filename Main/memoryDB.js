@@ -18,7 +18,7 @@ const dbConnection = init();
 
 export async function listMessages() {
   const db = await dbConnection;
-  return db.all('SELECT * FROM Messages');
+  return await db.all('SELECT * FROM Messages');
 }
 
 export async function findMessage(id) {
@@ -44,7 +44,7 @@ export async function editMessage(updatedMsg) {
   const xp = updatedMsg.xp;
   const competencies = updatedMsg.competencies;
 
-  const query = await db.run('UPDATE Message SET date = ?, work = ?, xp = ?, competencies = ? WHERE id = ?', [date, work, xp, competencies, id]);
+  const query = await db.run('UPDATE Messages SET dateDone = ?, work = ?, xp = ?, competencies = ? WHERE id = ?', [date, work, xp, competencies, id]);
 
   if (query.changes === 0) throw new Error('message not found');
 

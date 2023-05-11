@@ -5,22 +5,22 @@ const application = express();
 application.use(express.static('clientside', { extensions: ['html'] }));
 
 
-function getMessages(request, response) { // Turn Messages into a json to throw at index.js
-  response.json(memoryDB.listMessages());
+async function getMessages(request, response) { // Turn Messages into a json to throw at index.js
+  response.json(await memoryDB.listMessages());
 }
 
-function getMessageByID(request, response) { // Look for a message by its ID
-  const result = memoryDB.findMessage(request.params.id);
+async function getMessageByID(request, response) { // Look for a message by its ID
+  const result = await memoryDB.findMessage(request.params.id);
   if (result) { response.json(result); } else { response.status(404).send('No match for that ID.'); }
 }
 
-function postMessages(request, response) {
-  const messages = memoryDB.addMessage(request.body);
+async function postMessages(request, response) {
+  const messages = await memoryDB.addMessage(request.body);
   response.json(messages);
 }
 
-function putMessage(request, response) { // Put a new message in the same spot as provided
-  const message = memoryDB.editMessage(request.body);
+async function putMessage(request, response) { // Put a new message in the same spot as provided
+  const message = await memoryDB.editMessage(request.body);
   response.json(message);
 }
 
