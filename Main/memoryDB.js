@@ -6,7 +6,7 @@ import uuid from 'uuid-random';
 
 async function init() {
   const db = await open({
-    filename: './sql/initial.sql',
+    filename: './database.sqlite',
     driver: sqlite3.Database,
     verbose: true,
   });
@@ -18,7 +18,7 @@ const dbConnection = init();
 
 export async function listMessages() {
   const db = await dbConnection;
-  return db.all('SELECT * FROM Messages ');
+  return db.all('SELECT * FROM Messages');
 }
 
 export async function findMessage(id) {
@@ -26,11 +26,11 @@ export async function findMessage(id) {
   return db.get('SELECT * FROM Messages WHERE id = ?', id);
 }
 
-export async function addMessage(date, work, xp, competencies) {
+export async function addMessage(payload) {
   const db = await dbConnection;
 
   const id = uuid();
-  await db.run('INSERT INTO Messages VALUES (?,?,?,?,?)', [id, date, work, xp, competencies]);
+  await db.run('INSERT INTO Messages VALUES (?,?,?,?,?)', [id, payload.date, payload.work, payload.xp, payload.competencies]);
 
   return listMessages();
 }

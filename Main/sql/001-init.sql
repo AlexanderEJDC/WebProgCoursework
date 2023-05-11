@@ -2,7 +2,7 @@
 
 CREATE TABLE Messages (
   id   CHAR(36) PRIMARY KEY,
-  date  TEXT    NOT NULL,
+  dateDone  TEXT    NOT NULL,
   work  TEXT    NOT NULL,
   xp    TEXT    NOT NULL, 
   competencies  TEXT    NOT NULL
@@ -29,8 +29,7 @@ INSERT INTO Messages (id, dateDone, work, xp, competencies) VALUES
     'Basic memeory handling',
     'basic js skill',
     'A1'
-),
-;
+);
 
 -- Down 
 

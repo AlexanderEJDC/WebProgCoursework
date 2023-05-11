@@ -18,6 +18,7 @@ function removeContent(element) {
 }
 
 function showMessage(payload) {
+  console.log(payload);
   for (const item of payload) { // For every sub-payload recieved, add new table rows.
     // Will create new row, and fill four datacells with content.
     console.log('Payload Recieved: ', item);
