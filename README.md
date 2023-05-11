@@ -5,15 +5,33 @@ Objectives for this build:
 
     OBJ - Add database communication.
 
+FUNCTIONALITY: 
+
+    - Has read only, linked in the footer of main page. Can return you to main. 
+    - Displays a HTML table from a database model
+    - User can add input by using the input fields at the top of the page.
+    - Will be formatted for printing 
+    - Entries can be edited by clicking "edit message" attribute
+    - Stored entered information, include dates worked, the work, the experience and used competencies.
+
+REFLECTION: 
+
+    - Would like to add seperate pages/displays by month
+        - User would be able to sort through everything and view by month, only seeing the relevant entries 
+    - Employ greater CSS to organise the page better for both desktop and mobile
+    - Should order entires by date/time, rather than not at all. 
+
 
 CODE REFERENCING: 
 
-Functionality inspired and derived from various iterations of the UoP "Simple Message Board", specifically versions 5, 6, 8 and x. 
+Functionality inspired and derived from various iterations of the UoP "Simple Message Board" (The SMB), specifically versions 5, 6, 8 and x. 
 
     - This was used to establish a base of how the system would operate, using its API routing and editor techniques and applied for a table format. 
     - Instead of creating elements directly, we clone templates and append them to a table continously. 
     - We also condense certain functions and do not incorporate others (such as show detail)
     - Address a stated "con" by adding a read only mode, which will be the printable version.
+
+    - SMB GitHub repository found here: https://github.com/portsoc/staged-simple-message-board 
 
 - PROS:
     - Good frame of refernce for understanding 
