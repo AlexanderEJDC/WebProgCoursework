@@ -56,3 +56,12 @@ a {
     background-color: aquamarine;
     color: black;
 }
+
+@media print {
+    * {
+        background: white;
+        color: black; 
+
+        
+    }
+}

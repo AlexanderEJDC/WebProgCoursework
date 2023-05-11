@@ -24,9 +24,17 @@ function putMessage(request, response) { // Put a new message in the same spot a
   response.json(message);
 }
 
-application.get('/messages', getMessages);
-application.get('/messages/:id', getMessageByID);
-application.put('/messages/:id', express.json(), putMessage);
-application.post('/messages', express.json(), postMessages);
+// wrap async function for express.js error handling
+function asyncWrap(f) {
+  return (req, res, next) => {
+    Promise.resolve(f(req, res, next))
+      .catch((e) => next(e || new Error()));
+  };
+}
+
+application.get('/messages', asyncWrap(getMessages));
+application.get('/messages/:id', asyncWrap(getMessageByID));
+application.put('/messages/:id', express.json(), asyncWrap(putMessage));
+application.post('/messages', express.json(), asyncWrap(postMessages));
 
 application.listen(8080); // Listen to port 8080, as default 80 for HTTP is restricted.
