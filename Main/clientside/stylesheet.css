@@ -65,3 +65,10 @@ a {
         
     }
 }
+
+@media (prefers-color-scheme: light) {
+    :root {
+        background-color: white;
+        color: black; 
+    }
+}
