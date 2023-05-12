@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd Main & node server",
-    "watch": "cd Main & node --watch server.js",
+    "start": "cd Main && node server",
+    "watch": "cd Main && node --watch server.js",
     "setup": ""
   },
   "author": "",
