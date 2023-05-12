@@ -17,6 +17,8 @@ REFLECTION:
     - Employ greater CSS to organise the page better for both desktop and mobile.
     - Should order entires by date/time, rather than not at all. 
     - Allow for images to be submitted into an entry.
+    - Would use a form to accept competencies, rather than text.
+        - Link direct to IET Competencies PDF supplied as a remedy, should user forget.
 
 QUIRKS TO BE AWARE OF:
 
