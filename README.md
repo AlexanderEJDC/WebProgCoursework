@@ -33,7 +33,12 @@ QUIRKS TO BE AWARE OF:
 DOCUMENTATION: 
 
     - We have three html pages - one main (index), one for read only (reader) and one for entry editing (editor).
-    - Each page requests data from server.js, 
+    - Each page requests data from server.js, taking JSON string data and iterating through the array of objects sent.
+        - Each object populates a cloned tableRow, and then has an attribute appended onto that to allow for editing. 
+    - Server JS handles requests and responses, and will camme functions in memoryDB.js to run SQL queries of that database,
+    which is initialised by 001-init.sql. 
+
+    - reader.html only recieves data, and does not provide it. 
 
 
 CODE REFERENCING: 
