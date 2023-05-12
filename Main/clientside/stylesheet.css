@@ -1,11 +1,11 @@
 :root {
     font-family: Arial;
-    --pad: 1rem;
+    padding: 1em;
 
 }
 
 header {
-    width: 50vw;
+    padding: 1em;
 }
 
 * {
@@ -13,15 +13,55 @@ header {
     color: white;
 }
 
+#inputSection {
+    padding: 1em;
+    display: inline-grid;
+    grid-template-columns: [Spacer1] 15px [Col1] 100px [Spacer2] 15px [Col2] 100px [Spacer3] 15px [Col3] 100px [Spacer4] 15px;
+    grid-template-rows: [Row1] 50px [RSpacer1] 15px [Row2] 50px [RSpacer1] 15px [Row3] 50px;
+}
+
+#dateInput {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: Row1;
+    grid-row-end: Row1; 
+}
+
+#workInput {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: Row2;
+    grid-row-end: Row2; 
+}
+
+#xpInput {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: Row2;
+    grid-row-end: Row2; 
+}
+
+#compInput {
+    grid-column-start: 6;
+    grid-column-end: 6;
+    grid-row-start: Row2;
+    grid-row-end: Row2; 
+}
+
+#submissionBtn {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: Row3;
+    grid-row-end: Row3; 
+}
+
 .payloadInput {
     color: lightblue;
     background-color: lightblue;
     color: black;
-    display: grid;
-    grid-template-columns: 1fr auto;
 }
 
-.input {
+.input { 
     background-color: lightblue;
     color: black;
 }
@@ -30,17 +70,11 @@ header {
     border: 5px solid turquoise;
     border-spacing: 1rem;
     width: auto;
-    padding: 0.5rem;
-    display: grid; 
+    padding: 0.1rem;
 }
 
 .tableHeader {
-    border: 2px solid #333;
     color: lightblue;
-}
-
-.dataRow {
-    border: 2px solid #333; 
 }
 
 a {
@@ -58,11 +92,16 @@ a {
 }
 
 @media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;
+    }
+    #inputSection { visibility: collapse; }
+    footer { visibility: collapse; }
+
     * {
         background: white;
         color: black; 
-
-        
     }
 }
 
@@ -70,5 +109,19 @@ a {
     :root {
         background-color: white;
         color: black; 
+    }
+    #placementTable { 
+        border: 5px solid black;
+        border-spacing: 1rem;
+        width: auto;
+        padding: 0.1rem;
+    }
+    
+    .tableHeader {
+        color: navy;
+    }
+    
+    a {
+        color: navy;
     }
 }

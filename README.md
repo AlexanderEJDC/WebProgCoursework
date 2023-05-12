@@ -4,18 +4,34 @@ Coursework for Web Programming UoP
 FUNCTIONALITY: 
 
     - Has read only, linked in the footer of main page. Can return you to main. 
-    - Displays a HTML table from a database model
+    - Displays a HTML table from a database model.
     - User can add input by using the input fields at the top of the page.
-    - Will be formatted for printing 
-    - Entries can be edited by clicking "edit message" attribute
+    - Will be formatted for printing, hides input fields and footer link to read only.
+    - Entries can be edited by clicking "edit message" attribute.
     - Stored entered information, include dates worked, the work, the experience and used competencies.
 
 REFLECTION: 
 
-    - Would like to add seperate pages/displays by month
-        - User would be able to sort through everything and view by month, only seeing the relevant entries 
-    - Employ greater CSS to organise the page better for both desktop and mobile
+    - Would like to add seperate pages/displays by month.
+        - User would be able to sort through everything and view by month, only seeing the relevant entries. 
+    - Employ greater CSS to organise the page better for both desktop and mobile.
     - Should order entires by date/time, rather than not at all. 
+    - Allow for images to be submitted into an entry.
+
+QUIRKS TO BE AWARE OF:
+
+    - When creating a new entry, on repopulating the table the header "Placement Diary" gets temporarily removed.
+        - This can be fixed by refreshing the page.
+
+        - Occurs due to removing all the content from the table, inc. header when adding new entry.
+        - Is repopulated on refresh with inital values from database.
+
+    - When viewing in Mobile Mode, when editing a message and returning to main it may zoom you in automatically.
+
+DOCUMENTATION: 
+
+    - We have three html pages - one main (index), one for read only (reader) and one for entry editing (editor).
+    - Each page requests data from server.js, 
 
 
 CODE REFERENCING: 

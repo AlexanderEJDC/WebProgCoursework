@@ -9,11 +9,13 @@
 
 <main>
 
+<section id = inputSection> 
 <input  type="date" class = "payloadInput" id = "dateInput" name = "date" min = "2023-01-01" max = "2040-12-12">
 <input type="text" class = "payloadInput" id = "workInput" name = "work" placeholder = "Add work done here">
 <input type="text" class = "payloadInput" id = "xpInput" name = "xp" placeholder = "Add XP gains here">
 <input type="text" class = "payloadInput" id = "compInput" name = "competencies" placeholder = "Add competencies here"> 
 <input type="submit" id = "submissionBtn" value = "Send Message" disabled> 
+</section>
 
 <section id = tableSection>
 
@@ -23,6 +25,12 @@
             <th colspan = "4" class = "tableHeader"> Placement Diary </th>
         </tr>
     </thead>
+    <tr>
+        <td> Date: </td>
+        <td> Work Done: </td>
+        <td> Experienced Gained: </td>
+        <td> Competencies: </td>
+    </tr>
 </table>
 
 </section>
