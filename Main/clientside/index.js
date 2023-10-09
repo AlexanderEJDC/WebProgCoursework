@@ -66,6 +66,7 @@ async function sendMessage() { // Send a message to the server
 
   if (response.ok) { // send the updated messages to the server, then append it to the table
     const updatedMsgs = await response.json();
+    console.log('response: ', updatedMsgs);
     removeContent(el.tableParent);
     showMessage(updatedMsgs);
     el.submissionBtn.disabled = true;

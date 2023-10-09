@@ -7,6 +7,7 @@ application.use(express.static('clientside', { extensions: ['html'] }));
 
 async function getMessages(request, response) { // Turn Messages into a json to throw at index.js
   response.json(await memoryDB.listMessages());
+  console.log('getMessages Response: ', response.json());
 }
 
 async function getMessageByID(request, response) { // Look for a message by its ID
@@ -17,6 +18,7 @@ async function getMessageByID(request, response) { // Look for a message by its 
 async function postMessages(request, response) {
   const messages = await memoryDB.addMessage(request.body);
   response.json(messages);
+  console.log('POSTING: ', response.json());
 }
 
 async function putMessage(request, response) { // Put a new message in the same spot as provided
